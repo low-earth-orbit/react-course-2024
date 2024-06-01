@@ -5,31 +5,40 @@ import NewPost from "./NewPost";
 import Modal from "./Modal";
 
 function PostList(props) {
-  const [enteredBody, setEnteredBody] = useState("");
-  const [enteredAuthor, setEnteredAuthor] = useState("");
 
-  function changeBodyHandler(event) {
-    setEnteredBody(event.target.value);
-  }
+   const [modalIsVisible, setModalIsVisible] = useState(true);
+   const [enteredBody, setEnteredBody] = useState("");
+   const [enteredAuthor, setEnteredAuthor] = useState("");
 
-  function onAuthorChangeHandler(event) {
-    setEnteredAuthor(event.target.value);
-  }
+   function hideModalHandler() {
+     setModalIsVisible(false);
+   }
 
-  return (
-    <>
-      <Modal>
-        <NewPost
-          onBodyChange={changeBodyHandler}
-          onAuthorChange={onAuthorChangeHandler}
-        />
-      </Modal>
-      <ul className={classes.posts}>
-        <Post author={enteredAuthor} body={enteredBody} />
-        <Post author="Manual" body="Check out the course!" />
-      </ul>
-    </>
-  );
+   function changeBodyHandler(event) {
+     setEnteredBody(event.target.value);
+   }
+
+   function onAuthorChangeHandler(event) {
+     setEnteredAuthor(event.target.value);
+   }
+
+   return (
+     <>
+       {modalIsVisible && (
+         <Modal onClose={hideModalHandler}>
+           <NewPost
+             onBodyChange={changeBodyHandler}
+             onAuthorChange={onAuthorChangeHandler}
+           />
+         </Modal>
+       )}
+
+       <ul className={classes.posts}>
+         <Post author={enteredAuthor} body={enteredBody} />
+         <Post author="Manual" body="Check out the course!" />
+       </ul>
+     </>
+   );
 }
 
 export default PostList;
