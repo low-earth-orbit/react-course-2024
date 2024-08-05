@@ -30,7 +30,7 @@ export default function Examples() {
   return (
     <Section title="Examples" id="examples">
       <Tabs
-        ButtonsContainer="menu" // starts with an uppercase char or being mapped in the component
+        // ButtonsContainer="menu" // starts with an uppercase char or being mapped in the component
         // for custom component, use something like {Section}
         buttons={
           <>
