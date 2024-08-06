@@ -6,20 +6,20 @@ const initialGameBoard = [
   [null, null, null],
 ];
 
-export default function GameBoard({ activePlayerSymbol, onSelectSquare }) {
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+export default function GameBoard({ onSelectSquare }) {
+  // const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
-  const handleSelectSquare = (rowIndex, colIndex) => {
-    setGameBoard((prevGameBoard) => {
-      const updatedBoard = [
-        ...prevGameBoard.map((innerArray) => [...innerArray]),
-      ]; // deep copy
-      updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-      return updatedBoard;
-    }); // update object-state immutably
+  // const handleSelectSquare = (rowIndex, colIndex) => {
+  //   setGameBoard((prevGameBoard) => {
+  //     const updatedBoard = [
+  //       ...prevGameBoard.map((innerArray) => [...innerArray]),
+  //     ]; // deep copy
+  //     updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
+  //     return updatedBoard;
+  //   }); // update object-state immutably
 
-    onSelectSquare(); // defined in the App component
-  };
+  //   onSelectSquare(); // defined in the App component
+  // };
 
   return (
     <ol id="game-board">
@@ -28,7 +28,7 @@ export default function GameBoard({ activePlayerSymbol, onSelectSquare }) {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>
+                <button onClick={onSelectSquare(rowIndex, colIndex)}>
                   {playerSymbol}
                 </button>
               </li>
