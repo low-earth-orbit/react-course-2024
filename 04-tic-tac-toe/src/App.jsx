@@ -3,7 +3,7 @@ import Player from "./components/Player";
 import { useState } from "react";
 
 function App() {
-  const [gameTurns, setGameTurns] = useState();
+  const [gameTurns, setGameTurns] = useState([]);
   const [activePlayer, setActivePlayer] = useState("X");
 
   function handleSelectSquare(rowIndex, colIndex) {
@@ -30,7 +30,7 @@ function App() {
           <Player name="Player 2" symbol="O" isActive={activePlayer === "O"}/>
         </ol>
         <GameBoard
-          activePlayerSymbol={activePlayer}
+          turns={gameTurns}
           onSelectSquare={handleSelectSquare}
         />
       </div>
