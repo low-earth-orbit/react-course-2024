@@ -5,7 +5,12 @@ import { useState } from "react";
 import { WINNING_COMBINATIONS } from "./winning-combinations";
 import GameOver from "./components/GameOver";
 
-const initialGameBoard = [
+const PLAYERS = {
+  X: "Player 1",
+  O: "Player 2",
+};
+
+const INITIAL_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
@@ -19,18 +24,8 @@ function deriveActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
-function App() {
-  const [players, setPlayers] = useState({
-    X: "Player 1",
-    O: "Player 2",
-  });
-
-  const [gameTurns, setGameTurns] = useState([]);
-
-  // derive current player from gameTurns
-  const activePlayer = deriveActivePlayer(gameTurns);
-
-  let gameBoard = [...initialGameBoard.map((array) => [...array])];
+function deriveGameBoard(gameTurns) {
+  let gameBoard = [...INITIAL_GAME_BOARD.map((array) => [...array])];
   // deep copy of initial game board
   // each array in the board needs also to be deep copied
   // So this line setGameTurns([]); will use the empty initial game board upon re-render of this component
@@ -40,7 +35,10 @@ function App() {
     const { row, col } = square; // object destructuring
     gameBoard[row][col] = player; // deriving game board from turns state
   }
+  return gameBoard;
+}
 
+function deriveWinner(players, gameBoard) {
   let winner = null;
   for (const combination of WINNING_COMBINATIONS) {
     // of, not in!
@@ -60,6 +58,17 @@ function App() {
       winner = players[firstSquareSymbol];
     }
   }
+  return winner;
+}
+
+function App() {
+  const [players, setPlayers] = useState(PLAYERS);
+
+  const [gameTurns, setGameTurns] = useState([]);
+
+  const activePlayer = deriveActivePlayer(gameTurns);
+  const gameBoard = deriveGameBoard(gameTurns);
+  const winner = deriveWinner(players, gameBoard);
 
   const hasDraw = gameTurns.length === 9 && !winner;
 
