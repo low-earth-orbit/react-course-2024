@@ -16,12 +16,18 @@ function App() {
       return { ...prevUserInput, [inputIdentifier]: +newValue }; // + converts string to number
     });
   }
+  
+  const isInputValid = userInput.duration >= 1; 
 
   return (
     <>
       <Header />
       <UserInput input={userInput} onInputChange={handleChange} />
-      <Results input={userInput} />
+      {isInputValid ? (
+        <Results input={userInput} />
+      ) : (
+        <p className="center">Please enter valid input data.</p>
+      )}
     </>
   );
 }

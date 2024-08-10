@@ -9,10 +9,8 @@ export default function Results({ input }) {
     results[0].interest -
     results[0].annualInvestment;
 
-  console.log(results);
-
   return (
-    <table className="center" id="result">
+    <table id="result">
       <thead>
         <tr>
           <th>Year</th>
