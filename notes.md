@@ -26,3 +26,5 @@ Use case 2: want to save a value for the component; remain not changed upon comp
 Whenever a ref changes, the component function will not be re-executed. This is not the case for state update.
 
 State vs Refs
+
+140: Cannot pass ref using props in standard way. Must use `forwardRef`.
