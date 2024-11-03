@@ -3,7 +3,8 @@ import { useState, useRef } from "react";
 export default function Player() {
   const playerName = useRef();
 
-  const [enteredPlayerName, setEnteredPlayerName] = useState(null);
+  const [enteredPlayerName, setEnteredPlayerName] = useState(null); // Need this state to update UI
+  // ref update will not cause component re-render
 
   function handleClick() {
     setEnteredPlayerName(playerName.current.value);

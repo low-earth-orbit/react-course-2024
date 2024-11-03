@@ -16,4 +16,10 @@ className={emailNotValid ? "invalid" : undefined}
 
 133: Introducing Refs
 
-useRef hook.
+useRef hook. Either called in component function or custom hook.
+
+135: For the first component render cycle, `playerName.current.value` is undefined.
+
+Whenever a ref changes, the component function will not be re-executed. This is not the case for state update.
+
+State vs Refs.
