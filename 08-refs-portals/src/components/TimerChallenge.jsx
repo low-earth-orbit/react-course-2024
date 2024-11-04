@@ -5,23 +5,28 @@ export default function TimerChallenge({ title, targetTime }) {
   const timer = useRef();
   const dialog = useRef();
 
-  const [timerStarted, setTimerStarted] = useState(false);
-  const [timerExpired, setTimerExpired] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(targetTime * 1000);
+
+  const timerActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
+
+  if (timeRemaining <= 0) {
+    // time expired
+    clearInterval(timer.current);
+    setTimeRemaining(targetTime * 1000);
+    dialog.current.open(); // open method defined by useImperativeHandle hook in the component
+  }
 
   function handleStart() {
-    timer.current = setTimeout(() => {
-      setTimerExpired(true);
-      dialog.current.open(); // open method defined by useImperativeHandle hook in the component
-    }, targetTime * 1000);
-
-    setTimerStarted(true);
+    timer.current = setInterval(() => {
+      setTimeRemaining((prev) => setTimeRemaining(prev - 10));
+    }, 10); // 10ms
   }
 
   function handleStop() {
-    clearTimeout(timer.current);
-
-    setTimerStarted(false);
+    clearInterval(timer.current);
+    dialog.current.open(); // open method defined by useImperativeHandle hook in the component
   }
+
   return (
     <>
       <ResultModal
@@ -35,12 +40,12 @@ export default function TimerChallenge({ title, targetTime }) {
           {targetTime} second{targetTime > 1 ? "s" : ""}
         </p>
         <p>
-          <button onClick={timerStarted ? handleStop : handleStart}>
-            {timerStarted ? "Stop" : "Start"} Challenge
+          <button onClick={timerActive ? handleStop : handleStart}>
+            {timerActive ? "Stop" : "Start"} Challenge
           </button>
         </p>
-        <p className={timerStarted ? "active" : undefined}>
-          {timerStarted ? "Time is running..." : "Timer inactive"}
+        <p className={timerActive ? "active" : undefined}>
+          {timerActive ? "Time is running..." : "Timer inactive"}
         </p>
       </section>
     </>
