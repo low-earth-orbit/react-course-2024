@@ -8,6 +8,7 @@ const ResultModal = forwardRef(function ResultModal(
 
   const userLost = remainingTime <= 0;
   const formattedRemainingTime = (remainingTime / 1000).toFixed(2);
+  const score = Math.round((1 - remainingTime / (targetTime * 1000)) * 100);
 
   useImperativeHandle(ref, () => {
     return {
@@ -19,8 +20,8 @@ const ResultModal = forwardRef(function ResultModal(
   // detaches timer challenge component from result modal component.
 
   return (
-    <dialog ref={dialog} className="result-modal">
-      <h2>You {userLost ? "lost" : "won"}</h2>
+    <dialog ref={dialog} className="result-modal" onClose={handleReset}>
+      {userLost ? <h2>You lost</h2> : <h2>Your Score: {score}</h2>}
       <p>
         Target time was <strong>{targetTime} seconds.</strong>
       </p>
