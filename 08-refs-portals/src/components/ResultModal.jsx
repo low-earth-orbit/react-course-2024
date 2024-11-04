@@ -1,4 +1,5 @@
 import { useRef, forwardRef, useImperativeHandle } from "react";
+import { createPortal } from "react-dom";
 
 const ResultModal = forwardRef(function ResultModal(
   { targetTime, remainingTime, handleReset },
@@ -19,7 +20,8 @@ const ResultModal = forwardRef(function ResultModal(
   }); // works together with forwardRef. to define properties or methods that are accessible in this component
   // detaches timer challenge component from result modal component.
 
-  return (
+  // teleport this component to an html element
+  return createPortal(
     <dialog ref={dialog} className="result-modal" onClose={handleReset}>
       {userLost ? <h2>You lost</h2> : <h2>Your Score: {score}</h2>}
       <p>
@@ -32,7 +34,8 @@ const ResultModal = forwardRef(function ResultModal(
       <form method="dialog" onSubmit={handleReset}>
         <button>Close</button>
       </form>
-    </dialog>
+    </dialog>,
+    document.getElementById("modal") // attach this component to the modal html element
   );
 });
 
