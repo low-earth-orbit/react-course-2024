@@ -74,3 +74,7 @@ State vs Refs
 ### 140
 
 Cannot pass ref using props in standard way. Must use `forwardRef`.
+
+### 154
+
+Need to wrap component using `forwardRef` in order to pass ref. This is not needed for React 19 and newer.
