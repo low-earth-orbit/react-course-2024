@@ -78,3 +78,29 @@ Cannot pass ref using props in standard way. Must use `forwardRef`.
 ### 154
 
 Need to wrap component using `forwardRef` in order to pass ref. This is not needed for React 19 and newer.
+
+### 167
+
+```
+<CartContext.Provider>
+</CartContext.Provider>
+```
+
+React 19 and above
+
+```
+<CartContext>
+</CartContext>
+```
+
+### 168
+
+React 19 and above. The following would work. Note that it works even use hook is used within the if block.
+
+```
+import { use } from 'react';
+
+if (true) {
+  const cartCtx = use(CartContext);
+}
+```
