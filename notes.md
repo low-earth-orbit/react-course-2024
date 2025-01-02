@@ -108,3 +108,19 @@ if (true) {
 ### 170 A different way of consuming context
 
 `<CartContext.Consumer>` not preferred
+
+### Coding Exercise 26
+
+state update
+
+```
+  function toggleTheme(theme) {
+      setTheme( (prev) => {
+          if (prev === 'light') return 'dark';
+          if (prev === 'dark') return 'light';
+      })
+  }
+```
+
+### 174 useReducer hook
+
