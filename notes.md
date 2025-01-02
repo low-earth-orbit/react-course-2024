@@ -104,3 +104,7 @@ if (true) {
   const cartCtx = use(CartContext);
 }
 ```
+
+### 170 A different way of consuming context
+
+`<CartContext.Consumer>` not preferred
