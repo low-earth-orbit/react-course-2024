@@ -79,6 +79,8 @@ Cannot pass ref using props in standard way. Must use `forwardRef`.
 
 Need to wrap component using `forwardRef` in order to pass ref. This is not needed for React 19 and newer.
 
+## useContext
+
 ### 167
 
 ```
@@ -124,3 +126,6 @@ state update
 
 ### 174 useReducer hook
 
+## useEffect
+
+Side effects are "tasks" that don't affect the current component's render cycle.
