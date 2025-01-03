@@ -25,7 +25,7 @@ function App() {
 
       setAvailablePlaces(sortedPlaces);
     });
-  }, []); // empty dependency array meaning it will run only once upon rendering the component
+  }, []); // empty dependency array meaning it will run only once upon first-time executing of the component
   // if we remove the empty dependency array, it will be an infinite loop.
 
   function handleStartRemovePlace(id) {
@@ -45,6 +45,16 @@ function App() {
       const place = AVAILABLE_PLACES.find((place) => place.id === id);
       return [place, ...prevPickedPlaces];
     });
+
+    // The code below is a side effect but useEffect is not needed / should not be used.
+    const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+    if (storedIds.indexOf(id) === -1) {
+      // storedIds not include id
+      localStorage.setItem(
+        "selectedPlaces",
+        JSON.stringify([id, ...storedIds])
+      );
+    }
   }
 
   function handleRemovePlace() {
