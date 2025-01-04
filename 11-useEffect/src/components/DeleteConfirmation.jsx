@@ -11,7 +11,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
       // it runs before the component dismounts or right before the effect function runs
       clearTimeout(timer);
     };
-  }, []);
+  }, [onConfirm]);
 
   return (
     <div id="delete-confirmation">
