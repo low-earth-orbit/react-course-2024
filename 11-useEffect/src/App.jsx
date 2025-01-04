@@ -13,8 +13,8 @@ const storedPlaces = storedIds.map((id) =>
 );
 
 function App() {
-  const modal = useRef();
   const selectedPlace = useRef();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
   const [availablePlaces, setAvailablePlaces] = useState([]);
 
@@ -34,12 +34,12 @@ function App() {
   // if we remove the empty dependency array, it will be an infinite loop.
 
   function handleStartRemovePlace(id) {
-    modal.current.open();
+    setIsModalOpen(true);
     selectedPlace.current = id;
   }
 
   function handleStopRemovePlace() {
-    modal.current.close();
+    setIsModalOpen(false);
   }
 
   function handleSelectPlace(id) {
@@ -66,7 +66,7 @@ function App() {
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
-    modal.current.close();
+    setIsModalOpen(false);
 
     // The code below is a side effect but useEffect is not needed / should not be used.
     const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
@@ -78,7 +78,7 @@ function App() {
 
   return (
     <>
-      <Modal ref={modal}>
+      <Modal open={isModalOpen}>
         <DeleteConfirmation
           onCancel={handleStopRemovePlace}
           onConfirm={handleRemovePlace}
