@@ -4,14 +4,36 @@ import quizCompleting from "../assets/quiz-complete.png";
 import QuestionTimer from "./QuestionTimer.jsx";
 
 export default function Quiz() {
+  const [answerState, setAnswerState] = useState("unanswered");
   const [userAnswers, setUserAnswers] = useState([]); // array of user answers
   console.log("test userAnswers =", userAnswers);
-  const activeQuestionIndex = userAnswers.length; // derived state
+  const activeQuestionIndex =
+    answerState === "unanswered" ? userAnswers.length : userAnswers.length - 1; // derived state
   const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
 
-  const handleSelectAnswer = useCallback(function handleSelectAnswer(answer) {
-    setUserAnswers((prevAnswers) => [...prevAnswers, answer]);
-  }, []);
+  const handleSelectAnswer = useCallback(
+    function handleSelectAnswer(answer) {
+      setAnswerState("answered");
+
+      setUserAnswers((prevAnswers) => [...prevAnswers, answer]);
+
+      setTimeout(() => {
+        if (answer === QUESTIONS[activeQuestionIndex].answers[0]) {
+          // the selected answer is correct
+          setAnswerState("correct");
+        } else {
+          setAnswerState("wrong");
+        }
+        // after answerState being set to "correct" or "wrong", activeQuestionIndex will be userAnswers.length, which is the next question's index
+
+        setTimeout(() => {
+          // this resets answerState to "unanswered" because the question is just answered
+          setAnswerState("unanswered");
+        }, 2000);
+      }, 1000);
+    },
+    [activeQuestionIndex]
+  );
 
   const handleSkipAnswer = useCallback(() => handleSelectAnswer(null), []);
 
@@ -39,13 +61,30 @@ export default function Quiz() {
         />
         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
         <ul id="answers">
-          {shuffledAnswers.map((answer) => (
-            <li key={answer} className="answer">
-              <button onClick={() => handleSelectAnswer(answer)}>
-                {answer}
-              </button>
-            </li>
-          ))}
+          {shuffledAnswers.map((answer) => {
+            const isSelected = userAnswers[userAnswers.length - 1] === answer;
+            let cssClasses = "";
+            if (isSelected) {
+              if (answerState === "answered") {
+                cssClasses = "selected";
+              }
+
+              if (answerState === "correct" || answerState === "wrong") {
+                cssClasses = answerState;
+              }
+            }
+
+            return (
+              <li key={answer} className="answer">
+                <button
+                  onClick={() => handleSelectAnswer(answer)}
+                  className={cssClasses}
+                >
+                  {answer}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
