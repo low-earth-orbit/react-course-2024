@@ -37,11 +37,28 @@ export default function Question({ index, onSelectAnswer, onTimeout }) {
     answerState = "answered";
   }
 
+  // initial timer
+  let timer = 10000;
+
+  if (answer.selectedAnswer) {
+    // after the user selected an answer
+    timer = 1000;
+  }
+  if (answer.isCorrect !== null) {
+    // after user answered the question
+    timer = 2000;
+  }
+
   return (
     <div id="question">
       {/* key changes react will unmount and remount the component */}
       {/* without adding key prop here, the component will not rerender because timeout and onTimeout values do not change */}
-      <QuestionTimer timeout={10000} onTimeout={onTimeout} />
+      <QuestionTimer
+        key={timer}
+        timeout={timer}
+        onTimeout={answer.selectedAnswer ? onTimeout : null} // do not switch to the next question if the current question is not answered
+        mode={answerState}
+      />
       <h2>{QUESTIONS[index].text}</h2>
       <Answers
         answers={QUESTIONS[index].answers}
