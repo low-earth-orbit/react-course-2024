@@ -31,7 +31,11 @@ export default function Answers({
 
         return (
           <li key={answer} className="answer">
-            <button onClick={() => onSelect(answer)} className={cssClasses}>
+            <button
+              onClick={() => onSelect(answer)}
+              className={cssClasses}
+              disabled={answerState !== ""} // disable the button if an answer is selected to prevent clicking another answer or double click the same answer for the same question
+            >
               {answer}
             </button>
           </li>
