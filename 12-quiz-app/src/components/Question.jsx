@@ -10,7 +10,6 @@ export default function Question({ index, onSelectAnswer, onTimeout }) {
   });
 
   function handleSelectAnswer(answer) {
-    console.log("answer =", answer);
     setAnswer({
       selectedAnswer: answer,
       isCorrect: null,
@@ -56,7 +55,7 @@ export default function Question({ index, onSelectAnswer, onTimeout }) {
       <QuestionTimer
         key={timer}
         timeout={timer}
-        onTimeout={answer.selectedAnswer ? onTimeout : null} // do not switch to the next question if the current question is not answered
+        onTimeout={answer.selectedAnswer ? null : onTimeout} // do not skip question if the current question is answered. onTimeout is handleSkipAnswer defined in Quiz component
         mode={answerState}
       />
       <h2>{QUESTIONS[index].text}</h2>

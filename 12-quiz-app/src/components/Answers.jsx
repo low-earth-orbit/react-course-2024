@@ -1,5 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
-import QUESTIONS from "../questions.js";
+import React, { useRef } from "react";
 
 export default function Answers({
   answers,
