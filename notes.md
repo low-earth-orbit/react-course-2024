@@ -129,3 +129,17 @@ state update
 ## useEffect
 
 Side effects are "tasks" that don't affect the current component's render cycle.
+
+## Section 13: Optimization
+
+### Component tree
+
+Upon state update, the component where the state lives and all its child components along the component tree are re-rendered. Its parent component will not re-render.
+
+### avoid component function execution by `memo`
+
+`memo` compares prop values. If the prop value has not changed, the component will not rerender upon re-render of its parent component.
+
+Checking props with `memo` costs performance. Use as high up in the component tree as possible. Don't use it on components where props will change frequently.
+
+### avoid component function execution by clever structuring
