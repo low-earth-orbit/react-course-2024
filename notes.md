@@ -164,3 +164,27 @@ Sibling list items of the same type and the position of each could change.
 Specifying unique keys for each item helps (1) state management / keep list item position and (2) optimal rendering / re-render only the list item that has been updated.
 
 Another use case: `key`s for re-setting components. Whenever the key changes, React will throw away the old component instance and re-insert with a new one.
+
+### state scheduling
+
+In this code,
+
+```javascript
+function handleSetCount(newCount) {
+  setChosenCount(newCount);
+  console.log(chosenCount); // this won't print the new value
+}
+```
+
+the `console.log` statement will not print out the `newCount` because the state updating function `setChosenCount` is scheduled. The new value for `chosenCount` state will be available in the next the function `handleSetCount` executes.
+
+By using this pattern,
+
+```javascript
+setCounterChanges((prevCounterChanges) => [
+  { value: -1, id: Math.random() * 1000 },
+  ...prevCounterChanges,
+]);
+```
+
+React will guarantee that the latest value of `counterChanges` is available for setting a new value for the state. This is useful if multiple component instances / components are updating the state.
