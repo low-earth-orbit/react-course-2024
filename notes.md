@@ -83,24 +83,22 @@ Need to wrap component using `forwardRef` in order to pass ref. This is not need
 
 ### 167
 
-```
-<CartContext.Provider>
-</CartContext.Provider>
+```javascript
+<CartContext.Provider></CartContext.Provider>
 ```
 
 React 19 and above
 
-```
-<CartContext>
-</CartContext>
+```javascript
+<CartContext></CartContext>
 ```
 
 ### 168
 
 React 19 and above. The following would work. Note that it works even use hook is used within the if block.
 
-```
-import { use } from 'react';
+```javascript
+import { use } from "react";
 
 if (true) {
   const cartCtx = use(CartContext);
@@ -115,13 +113,13 @@ if (true) {
 
 state update
 
-```
-  function toggleTheme(theme) {
-      setTheme( (prev) => {
-          if (prev === 'light') return 'dark';
-          if (prev === 'dark') return 'light';
-      })
-  }
+```javascript
+function toggleTheme(theme) {
+  setTheme((prev) => {
+    if (prev === "light") return "dark";
+    if (prev === "dark") return "light";
+  });
+}
 ```
 
 ### 174 useReducer hook
@@ -188,3 +186,33 @@ setCounterChanges((prevCounterChanges) => [
 ```
 
 React will guarantee that the latest value of `counterChanges` is available for setting a new value for the state. This is useful if multiple component instances / components are updating the state.
+
+## Section 15: HTTP requests
+
+### Sending HTTP request
+
+```javascript
+useEffect(() => {
+  fetch("http://localhost:3000/places")
+    .then((response) => {
+      return response.json();
+    })
+    .then((resData) => {
+      setAvailablePlaces(resData.places);
+    });
+}, []);
+```
+
+async / await version below:
+
+```javascript
+useEffect(() => {
+  async function fetchPlaces() {
+    const response = await fetch("http://localhost:3000/places");
+    const resData = await response.json();
+    setAvailablePlaces(resData.places);
+  }
+
+  fetchPlaces();
+}, []);
+```
