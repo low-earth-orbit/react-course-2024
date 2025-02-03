@@ -143,3 +143,13 @@ Upon state update, the component where the state lives and all its child compone
 Checking props with `memo` costs performance. Use as high up in the component tree as possible. Don't use it on components where props will change frequently.
 
 ### avoid component function execution by clever structuring
+
+### 
+
+`memo` vs `useCallback` vs `useMemo`
+
+`memo` wraps a component. The wrapped component will only re-render if the props value has been changed, regardless of parent component being re-rendered.
+
+`useMemo` prevents execution of a function. It stores the result of the function. The function will only re-run if one of the deps is changed.
+
+`useCallback` memorizes a function.
