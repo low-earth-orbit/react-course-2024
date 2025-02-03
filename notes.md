@@ -144,12 +144,23 @@ Checking props with `memo` costs performance. Use as high up in the component tr
 
 ### avoid component function execution by clever structuring
 
-### 
-
-`memo` vs `useCallback` vs `useMemo`
+### `memo` vs `useCallback` vs `useMemo`
 
 `memo` wraps a component. The wrapped component will only re-render if the props value has been changed, regardless of parent component being re-rendered.
 
 `useMemo` prevents execution of a function. It stores the result of the function. The function will only re-run if one of the deps is changed.
 
 `useCallback` memorizes a function.
+
+### Why `key` is important
+
+state is scope to a component. Every instance has its own isolated state.
+
+Use case:
+`key` - the position of the item in the component tree
+
+Sibling list items of the same type and the position of each could change.
+
+Specifying unique keys for each item helps (1) state management / keep list item position and (2) optimal rendering / re-render only the list item that has been updated.
+
+Another use case: `key`s for re-setting components. Whenever the key changes, React will throw away the old component instance and re-insert with a new one.
