@@ -1,6 +1,7 @@
 import Places from "./Places.jsx";
 import { useState, useEffect } from "react";
 import ErrorPage from "./Error.jsx";
+import { sortPlacesByDistance } from "../loc.js";
 
 const places = localStorage.getItem("places");
 
@@ -21,14 +22,21 @@ export default function AvailablePlaces({ onSelectPlace }) {
           throw new Error("Failed to fetch places"); // this is what we consider an error response (if not 200, 300)
         }
 
-        setAvailablePlaces(resData.places);
+        navigator.geolocation.getCurrentPosition((position) => {
+          const sortedPlaced = sortPlacesByDistance(
+            resData.places,
+            position.coords.latitude,
+            position.coords.longitude
+          );
+          setAvailablePlaces(sortedPlaced);
+          setIsFetching(false);
+        });
       } catch (error) {
         setError({
           message: error.message || "Could not fetch places, please try again",
         });
+        setIsFetching(false);
       }
-
-      setIsFetching(false); // end loading state not matter it succeeds or not
     }
 
     fetchPlaces();
