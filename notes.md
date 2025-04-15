@@ -221,7 +221,7 @@ useEffect(() => {
 
 ### Rules of hooks
 
-1. Only call hooks in Component or *Other Hook Functions*.
+1. Only call hooks in Component or _Other Hook Functions_.
 
 1. Only call Hooks on the top level.
 
@@ -230,3 +230,5 @@ useEffect(() => {
 Outsource reusable, configurable function can be used in different components.
 
 Code that doesn't return JSX component can't be in its own component.
+
+Functions named starting with `use` are treated as hooks.
