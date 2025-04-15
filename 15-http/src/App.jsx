@@ -46,13 +46,29 @@ function App() {
     }
   }
 
-  const handleRemovePlace = useCallback(async function handleRemovePlace() {
-    setUserPlaces((prevPickedPlaces) =>
-      prevPickedPlaces.filter((place) => place.id !== selectedPlace.current.id)
-    );
+  const handleRemovePlace = useCallback(
+    async function handleRemovePlace() {
+      setUserPlaces((prevPickedPlaces) =>
+        prevPickedPlaces.filter(
+          (place) => place.id !== selectedPlace.current.id
+        )
+      );
 
-    setModalIsOpen(false);
-  }, []);
+      try {
+        updateUserPlaces(
+          userPlaces.filter((place) => place.id !== selectedPlace.current.id)
+        );
+      } catch (error) {
+        setUserPlaces(userPlaces);
+        setErrorUpdatingPlaces({
+          message: error.message || "Error removing places.",
+        });
+      }
+
+      setModalIsOpen(false);
+    },
+    [userPlaces]
+  );
 
   function handleError() {
     setErrorUpdatingPlaces(null);
