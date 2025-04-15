@@ -232,3 +232,11 @@ Outsource reusable, configurable function can be used in different components.
 Code that doesn't return JSX component can't be in its own component.
 
 Functions named starting with `use` are treated as hooks.
+
+## Section 17: Forms and input validation
+
+Input validation
+
+- on keystroke
+- on lost focus
+- on from submission
