@@ -1,5 +1,5 @@
-import { useRef, useState, useCallback, useEffect } from "react";
-import useFetch from "./hooks/useFetch.js";
+import { useRef, useState, useCallback } from "react";
+import { useFetch } from "./hooks/useFetch.js";
 import Places from "./components/Places.jsx";
 import Modal from "./components/Modal.jsx";
 import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
