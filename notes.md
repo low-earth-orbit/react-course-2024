@@ -216,3 +216,17 @@ useEffect(() => {
   fetchPlaces();
 }, []);
 ```
+
+## Section 16: Custom Hooks
+
+### Rules of hooks
+
+1. Only call hooks in Component or *Other Hook Functions*.
+
+1. Only call Hooks on the top level.
+
+### Why hooks
+
+Outsource reusable, configurable function can be used in different components.
+
+Code that doesn't return JSX component can't be in its own component.
