@@ -240,3 +240,12 @@ Input validation
 - on keystroke
 - on lost focus
 - on from submission
+
+## Sec 17
+
+Getting user input
+
+- by state (254)
+  - requires settings up input state
+- by ref (255)
+  - for simple input
