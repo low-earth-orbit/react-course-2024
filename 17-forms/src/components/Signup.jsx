@@ -10,6 +10,8 @@ export default function Signup() {
     data.acquisition = acquisitionChannel; // this will replace the acquisition property with the array of selected checkboxes
 
     console.log("FormData:", data);
+
+    // event.target.reset(); // this can reset the form
   }
 
   return (

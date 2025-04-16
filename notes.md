@@ -243,9 +243,11 @@ Input validation
 
 ## Sec 17
 
-Getting user input
+Getting user input values
 
-- by state (254)
+- via state (254)
   - requires settings up input state
-- by ref (255)
+- via ref (255)
   - for simple input
+- via FormData & Native Browser APIs
+  - for complex form values
