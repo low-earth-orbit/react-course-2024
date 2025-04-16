@@ -249,5 +249,6 @@ Getting user input values
   - requires settings up input state
 - via ref (255)
   - for simple input
+  - validation can be done only when the user submits the form
 - via FormData & Native Browser APIs
   - for complex form values
