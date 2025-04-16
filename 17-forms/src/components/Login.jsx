@@ -1,6 +1,11 @@
 export default function Login() {
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log("Form submitted");
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit} className="form">
       <h2>Login</h2>
 
       <div className="control-row">
