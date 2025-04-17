@@ -252,3 +252,7 @@ Getting user input values
   - validation can be done only when the user submits the form
 - via FormData & Native Browser APIs
   - for complex form values
+
+## Sec 18: Form Actions
+
+Form Actions is available in React 19+.
