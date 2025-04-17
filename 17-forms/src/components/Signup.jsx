@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function Signup() {
+  const [passwordsAreNotEqual, setPasswordsAreNotEqual] = useState(false);
+
   function handleSubmit(event) {
     event.preventDefault();
     console.log("Form submitted");
@@ -11,7 +15,13 @@ export default function Signup() {
 
     console.log("FormData:", data);
 
-    // event.target.reset(); // this can reset the form
+    if (data.password !== data["confirm-password"]) {
+      setPasswordsAreNotEqual(true);
+      console.log("Passwords are not equal");
+      return;
+    }
+    setPasswordsAreNotEqual(false);
+    console.log("Passwords are equal");
   }
 
   return (
@@ -44,6 +54,9 @@ export default function Signup() {
             name="confirm-password"
             required
           />
+          <div className="control-error">
+            {passwordsAreNotEqual && <p>Passwords must match.</p>}
+          </div>
         </div>
       </div>
 
