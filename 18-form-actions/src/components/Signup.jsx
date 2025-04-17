@@ -1,6 +1,29 @@
 export default function Signup() {
+  function handleSubmit(formData) {
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirm-password");
+    const firstName = formData.get("first-name");
+    const lastName = formData.get("last-name");
+    const phone = formData.get("phone");
+    const role = formData.get("role");
+    const acquisition = formData.getAll("acquisition");
+    const terms = formData.get("terms-and-conditions");
+    console.log({
+      email,
+      password,
+      confirmPassword,
+      firstName,
+      lastName,
+      phone,
+      role,
+      acquisition,
+      terms,
+    });
+  }
+
   return (
-    <form>
+    <form action={handleSubmit}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started 🚀</p>
 
