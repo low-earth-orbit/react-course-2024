@@ -6,81 +6,81 @@ import {
   isEqualToOtherValue,
 } from "../util/validation.js";
 
-export default function Signup() {
-  function signupAction(prevFormState, formData) {
-    // html name properties are used as keys in the FormData object
-    const email = formData.get("email");
-    const password = formData.get("password");
-    const confirmPassword = formData.get("confirm-password");
-    const firstName = formData.get("first-name");
-    const lastName = formData.get("last-name");
-    const role = formData.get("role");
-    const acquisitionChannel = formData.getAll("acquisition");
-    const terms = formData.get("terms");
-    console.log({
-      email,
-      password,
-      confirmPassword,
-      firstName,
-      lastName,
-      role,
-      acquisitionChannel,
-      terms,
-    });
+function signupAction(prevFormState, formData) {
+  // html name properties are used as keys in the FormData object
+  const email = formData.get("email");
+  const password = formData.get("password");
+  const confirmPassword = formData.get("confirm-password");
+  const firstName = formData.get("first-name");
+  const lastName = formData.get("last-name");
+  const role = formData.get("role");
+  const acquisitionChannel = formData.getAll("acquisition");
+  const terms = formData.get("terms");
+  console.log({
+    email,
+    password,
+    confirmPassword,
+    firstName,
+    lastName,
+    role,
+    acquisitionChannel,
+    terms,
+  });
 
-    let errors = [];
+  let errors = [];
 
-    if (!isEmail(email)) {
-      errors.push("Invalid email address.");
-    }
-
-    if (!isNotEmpty(password) || !hasMinLength(password, 6)) {
-      errors.push("You must enter a password with at least 6 characters.");
-    }
-
-    if (!isEqualToOtherValue(password, confirmPassword)) {
-      errors.push("Passwords do not match.");
-    }
-
-    if (!isNotEmpty(firstName) || !isNotEmpty(lastName)) {
-      errors.push("You must enter both your first and last names.");
-    }
-
-    if (!isNotEmpty(role)) {
-      errors.push("You must select a role.");
-    }
-
-    if (!terms) {
-      errors.push(
-        "To user our service, you must accept the terms and conditions."
-      );
-    }
-
-    if (acquisitionChannel.length === 0) {
-      errors.push("You must select at least one acquisition channel.");
-    }
-
-    if (errors.length > 0) {
-      // Display errors to the user
-      console.log("Errors:", errors);
-      return {
-        errors,
-        enteredValues: {
-          email,
-          password,
-          confirmPassword,
-          firstName,
-          lastName,
-          role,
-          acquisitionChannel,
-          terms,
-        },
-      };
-    }
-
-    return { errors: null };
+  if (!isEmail(email)) {
+    errors.push("Invalid email address.");
   }
 
+  if (!isNotEmpty(password) || !hasMinLength(password, 6)) {
+    errors.push("You must enter a password with at least 6 characters.");
+  }
+
+  if (!isEqualToOtherValue(password, confirmPassword)) {
+    errors.push("Passwords do not match.");
+  }
+
+  if (!isNotEmpty(firstName) || !isNotEmpty(lastName)) {
+    errors.push("You must enter both your first and last names.");
+  }
+
+  if (!isNotEmpty(role)) {
+    errors.push("You must select a role.");
+  }
+
+  if (!terms) {
+    errors.push(
+      "To user our service, you must accept the terms and conditions."
+    );
+  }
+
+  if (acquisitionChannel.length === 0) {
+    errors.push("You must select at least one acquisition channel.");
+  }
+
+  if (errors.length > 0) {
+    // Display errors to the user
+    console.log("Errors:", errors);
+    return {
+      errors,
+      enteredValues: {
+        email,
+        password,
+        confirmPassword,
+        firstName,
+        lastName,
+        role,
+        acquisitionChannel,
+        terms,
+      },
+    };
+  }
+
+  return { errors: null };
+}
+
+export default function Signup() {
   const [formState, formAction, pending] = useActionState(signupAction, {
     errors: null,
   });
