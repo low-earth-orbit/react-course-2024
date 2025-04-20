@@ -1,29 +1,28 @@
+import { useActionState } from "react";
 import {
   isEmail,
   isNotEmpty,
   hasMinLength,
   isEqualToOtherValue,
-} from "validator";
+} from "../util/validation.js";
 
 export default function Signup() {
-  function handleSubmit(formData) {
+  function signupAction(prevFormState, formData) {
     // html name properties are used as keys in the FormData object
     const email = formData.get("email");
     const password = formData.get("password");
     const confirmPassword = formData.get("confirm-password");
     const firstName = formData.get("first-name");
     const lastName = formData.get("last-name");
-    const phone = formData.get("phone");
     const role = formData.get("role");
     const acquisitionChannel = formData.getAll("acquisition");
-    const terms = formData.get("terms-and-conditions");
+    const terms = formData.get("terms");
     console.log({
       email,
       password,
       confirmPassword,
       firstName,
       lastName,
-      phone,
       role,
       acquisitionChannel,
       terms,
@@ -51,7 +50,7 @@ export default function Signup() {
       errors.push("You must select a role.");
     }
 
-    if (!isNotEmpty(terms)) {
+    if (!terms) {
       errors.push(
         "To user our service, you must accept the terms and conditions."
       );
@@ -60,16 +59,28 @@ export default function Signup() {
     if (acquisitionChannel.length === 0) {
       errors.push("You must select at least one acquisition channel.");
     }
+
+    if (errors.length > 0) {
+      // Display errors to the user
+      console.log("Errors:", errors);
+      return { errors };
+    }
+
+    return { errors: null };
   }
 
+  const [formState, formAction, pending] = useActionState(signupAction, {
+    errors: null,
+  });
+
   return (
-    <form action={handleSubmit}>
+    <form action={formAction}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started 🚀</p>
 
       <div className="control">
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" name="email" />
+        <input id="email" type="text" name="email" />
       </div>
 
       <div className="control-row">
@@ -147,6 +158,14 @@ export default function Signup() {
           agree to the terms and conditions
         </label>
       </div>
+
+      {formState.errors && (
+        <ul className="error">
+          {formState.errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      )}
 
       <p className="form-actions">
         <button type="reset" className="button button-flat">
