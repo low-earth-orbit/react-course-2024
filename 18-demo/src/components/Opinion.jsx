@@ -13,6 +13,7 @@ export function Opinion({ opinion: { id, title, body, userName, votes } }) {
     setVotesOptimistically("up"); // this will update optimisticVotes
 
     await upvoteOpinion(id); // this updates the backend
+    // if the backend fails, optimisticVotes will be reset
   }
 
   async function downvoteAction() {
