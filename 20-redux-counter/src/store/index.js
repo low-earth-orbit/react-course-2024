@@ -9,13 +9,13 @@ const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case "INCREMENT":
       return {
+        ...state,
         counter: state.counter + action.amount,
-        showCounter: state.showCounter,
       };
     case "DECREMENT":
       return {
+        ...state,
         counter: state.counter - action.amount,
-        showCounter: state.showCounter,
       };
     case "TOGGLE":
       return {

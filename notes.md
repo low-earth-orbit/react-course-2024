@@ -286,3 +286,12 @@ Reducer function - pure function, same input always produces same output.
 
 Input - old state + dispatch action
 Output - new state object
+
+### Reference vs primitive types
+
+https://academind.com/tutorials/reference-vs-primitive-values/
+
+primitive types - `number`, `string`, `boolean`, `undefined`, `null`
+reference types - `array`, `object`
+
+### Redux toolkit
