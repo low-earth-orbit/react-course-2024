@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useCallback } from "react";
+
+import { counterActions } from "../store";
 import classes from "./Counter.module.css";
 
 const Counter = () => {
@@ -7,32 +8,29 @@ const Counter = () => {
   const counter = useSelector((state) => state.counter);
   const show = useSelector((state) => state.showCounter);
 
-  const incrementHandler = useCallback(
-    (amount) => {
-      dispatch({ type: "INCREMENT", amount });
-    },
-    [dispatch]
-  ); // useCallback prevents functions from being recreated on every render
+  const incrementHandler = () => dispatch(counterActions.increment());
+  const decrementHandler = () => {
+    dispatch(counterActions.decrement());
+  };
 
-  const decrementHandler = useCallback(
-    (amount) => {
-      dispatch({ type: "DECREMENT", amount });
-    },
-    [dispatch]
-  );
+  const increaseHandler = (amount) => {
+    dispatch(counterActions.increase(amount)); // { type: SOME_ACTION, payload: SOME_VALUE }
+  };
+  const decreaseHandler = (amount) => dispatch(counterActions.decrease(amount));
 
-  const toggleCounterHandler = useCallback(() => {
-    dispatch({ type: "TOGGLE" });
-  }, [dispatch]);
+  const toggleCounterHandler = () => {
+    dispatch(counterActions.toggleCounter());
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
       {show && <div className={classes.value}>{counter}</div>}
       <div>
-        <button onClick={() => decrementHandler(1)}>-</button>
-        <button onClick={() => incrementHandler(5)}>+ 5</button>
-        <button onClick={() => incrementHandler(1)}>+</button>
+        <button onClick={decrementHandler}>-</button>
+        <button onClick={() => decreaseHandler(5)}>- 5</button>
+        <button onClick={() => increaseHandler(5)}>+ 5</button>
+        <button onClick={incrementHandler}>+</button>
       </div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
