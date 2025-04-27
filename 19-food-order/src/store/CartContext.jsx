@@ -61,6 +61,13 @@ function cartReducer(state, action) {
     };
   }
 
+  if (action.type === "CLEAR_CART") {
+    return {
+      ...state,
+      items: [],
+    };
+  }
+
   return state;
 }
 
@@ -77,9 +84,11 @@ export function CartContextProvider({ children }) {
     removeItem: (id) => {
       dispatchCartAction({ type: "REMOVE_ITEM", id });
     },
+    clearCart: () => {
+      dispatchCartAction({ type: "CLEAR_CART" });
+    },
   };
 
-  console.log(cartContext);
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
   );
