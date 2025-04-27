@@ -295,3 +295,12 @@ primitive types - `number`, `string`, `boolean`, `undefined`, `null`
 reference types - `array`, `object`
 
 ### Redux toolkit
+
+## Sec 21 Redux Cont'd
+
+Reducers must be pure, side-effect free synchronous functions.
+
+Where should side-effects & async tasks be executed?
+
+- useEffect inside the components.
+- Inside the action creators.
