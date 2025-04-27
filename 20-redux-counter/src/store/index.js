@@ -1,25 +1,25 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-const initialState = {
-  counter: 0,
+const initialCounterState = {
+  value: 0,
   showCounter: true,
 };
 
 const counterSlice = createSlice({
   name: "counter",
-  initialState,
+  initialState: initialCounterState,
   reducers: {
     increment(state) {
-      state.counter++;
+      state.value++;
     },
     decrement(state) {
-      state.counter--;
+      state.value--;
     },
     increase(state, action) {
-      state.counter = state.counter + action.payload;
+      state.value = state.value + action.payload;
     },
     decrease(state, action) {
-      state.counter = state.counter - action.payload;
+      state.value = state.value - action.payload;
     },
     toggleCounter(state) {
       state.showCounter = !state.showCounter;
@@ -27,20 +27,31 @@ const counterSlice = createSlice({
   },
 });
 
-const store = configureStore({
-  reducer: counterSlice.reducer,
+const initialAuthState = {
+  loggedIn: false,
+};
+
+const authSlice = createSlice({
+  name: "auth",
+  initialState: initialAuthState,
+  reducers: {
+    login(state) {
+      state.loggedIn = true;
+    },
+    logout(state) {
+      state.loggedIn = false;
+    },
+  },
 });
-// If you configure store the way it was in the previous lecture:
 
-// const store = configureStore({
-//     reducer: { counter: counterSlice.reducer },
-// });
-
-// You will have to access the counter property (and showCounter property) on the counter state slice in useSelector
-
-// const counter = useSelector((state) => state.counter.counter);
-// const showCounter = useSelector((state) => state.counter.showCounter);
+const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+    auth: authSlice.reducer,
+  },
+});
 
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 
 export default store;
