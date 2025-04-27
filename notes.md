@@ -255,4 +255,34 @@ Getting user input values
 
 ## Sec 18: Form Actions
 
-Form Actions is available in React 19+.
+Form action is available in React 19+.
+
+## Sec 20: Redux
+
+### State/data management
+
+- Local state - single component
+- Cross-component state
+- App-wide state
+
+React Context solves "prop drilling" issue for Cross-component and App-wide state.
+
+### React context's potential problems
+
+- Deeply nested providers
+- Performance
+
+### Redux - alternative to Context
+
+Central data store/one store
+
+Reducer function (a general concept, not useReducer hook) is responsible for mutating store data
+
+Components dispatch actions. Actions are forwarded to reducer. Reducers mutate data in Store. Components subscribe to Store.
+
+### Reducer function
+
+Reducer function - pure function, same input always produces same output.
+
+Input - old state + dispatch action
+Output - new state object
