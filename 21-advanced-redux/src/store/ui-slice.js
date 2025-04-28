@@ -4,10 +4,22 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: {
     cartIsVisible: false,
+    notification: {
+      status: null,
+      title: null,
+      message: null,
+    },
   },
   reducers: {
     toggle(state) {
       state.cartIsVisible = !state.cartIsVisible;
+    },
+    showNotification(state, action) {
+      state.notification = {
+        status: action.payload.status,
+        title: action.payload.title,
+        message: action.payload.message,
+      };
     },
   },
 });

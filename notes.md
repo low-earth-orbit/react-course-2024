@@ -304,3 +304,16 @@ Where should side-effects & async tasks be executed?
 
 - useEffect inside the components.
 - Inside the action creators.
+
+331 Data transformation can reside in backend logic. If we had a backend, we could do less work in FE.
+
+332 Fat reducer vs fat components vs fat actions
+
+- Synchronous, side-effect free code - data transformation:
+  - prefer reducers
+  - avoid action rectors or components
+- Async code or code with side-effects:
+  - Prefer action creators or components
+  - never use reducers
+
+Cannot send Firebase request (async) inside a reducer
