@@ -17,14 +17,21 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
+    // do not send cart data on initial render
     if (isInitial) {
       isInitial = false;
       return;
     }
-    dispatch(sendCartData(cart));
+
+    // send only if cart changed
+    // prevents sending cart data on every render
+    if (cart.changed) {
+      dispatch(sendCartData(cart));
+    }
   }, [cart, dispatch]);
 
   useEffect(() => {
+    console.log("Fetching cart data...");
     dispatch(fetchCartData());
   }, [dispatch]);
 

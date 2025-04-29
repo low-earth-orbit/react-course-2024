@@ -17,10 +17,11 @@ export const sendCartData = (cart) => {
         `${process.env.REACT_APP_FIREBASE_URL}cart.json`,
         {
           method: "PUT", // this will overwrite the existing data
-          body: JSON.stringify(cart),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          body: JSON.stringify({
+            items: cart.items,
+            totalQuantity: cart.totalQuantity,
+            // does not contain `changed` property it's not saved to DB
+          }),
         }
       );
 
