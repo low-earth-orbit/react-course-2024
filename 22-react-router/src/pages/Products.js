@@ -1,7 +1,7 @@
 function ProductsPage() {
   return (
     <div>
-      <h1>Products</h1>
+      <h1>The Products Page</h1>
       <p>List of products will be displayed here.</p>
     </div>
   );
