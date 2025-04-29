@@ -325,3 +325,5 @@ A function that delays an action until later. It does not return the action itse
 ## Sec 22: React Router
 
 SPA - multiple pages (urls) handled by client code, without fetching new html index file from the server
+
+Routes are simple path <=> component mappings. Path `/products` <=> Component `<Products />`
