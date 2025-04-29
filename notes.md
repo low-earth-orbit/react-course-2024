@@ -321,3 +321,7 @@ Cannot send Firebase request (async) inside a reducer
 ### Thunk
 
 A function that delays an action until later. It does not return the action itself but instead another function which eventually returns the action.
+
+## Sec 22: React Router
+
+SPA - multiple pages (urls) handled by client code, without fetching new html index file from the server
