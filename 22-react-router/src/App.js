@@ -25,11 +25,10 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <HomePage /> },
+      { path: "", element: <HomePage /> },
       {
-        path: "products",
+        path: "products", // This is relative path. The full path is "/products"
         element: <ProductsPage />,
-        errorElement: <ErrorPage />,
       },
       { path: "products/:productId", element: <ProductDetailPage /> },
     ],
