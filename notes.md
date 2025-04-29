@@ -296,7 +296,7 @@ reference types - `array`, `object`
 
 ### Redux toolkit
 
-## Sec 21 Redux Cont'd
+## Sec 21 Advanced Redux - Async tasks, side effects
 
 Reducers must be pure, side-effect free synchronous functions.
 
@@ -317,3 +317,7 @@ Where should side-effects & async tasks be executed?
   - never use reducers
 
 Cannot send Firebase request (async) inside a reducer
+
+### Thunk
+
+A function that delays an action until later. It does not return the action itself but instead another function which eventually returns the action.
