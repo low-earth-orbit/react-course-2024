@@ -327,3 +327,5 @@ A function that delays an action until later. It does not return the action itse
 SPA - multiple pages (urls) handled by client code, without fetching new html index file from the server
 
 Routes are simple path <=> component mappings. Path `/products` <=> Component `<Products />`
+
+351 - You can use `useLoaderData()` in the element that's assigned to a route AND in all components that might be used inside that element.
