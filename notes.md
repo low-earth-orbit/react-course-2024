@@ -329,3 +329,5 @@ SPA - multiple pages (urls) handled by client code, without fetching new html in
 Routes are simple path <=> component mappings. Path `/products` <=> Component `<Products />`
 
 351 - You can use `useLoaderData()` in the element that's assigned to a route AND in all components that might be used inside that element.
+
+Data is loaded before rendering the page.
