@@ -17,9 +17,9 @@ export async function loader() {
   const response = await fetch("http://localhost:8080/events");
 
   if (!response.ok) {
-    // return { isError: true, message: "Could not fetch events." };
-
-    throw { message: "Could not fetch events." }; // this will go to the errorElement defined in the router.
+    throw new Response(
+      JSON.stringify({ message: "Could not fetch events." }, { status: 500 })
+    ); // this will go to the errorElement defined in the router.
   } else {
     return response;
   }
