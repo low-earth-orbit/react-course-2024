@@ -11,7 +11,11 @@ function EventForm({ method, event }) {
   }
 
   return (
-    <Form method="post" className={classes.form}>
+    <Form
+      method="post"
+      // action="/any-other-path" // to trigger action of a different route
+      className={classes.form}
+    >
       <p>
         <label htmlFor="title">Title</label>
         <input
