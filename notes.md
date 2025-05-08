@@ -341,3 +341,7 @@ Data is loaded before rendering the page.
 ### 378 useFetcher hook
 
 `fetcher` is used whenever we need to trigger an action without triggering a route transition / don't load the route component
+
+### 379 defer data loading
+
+By default, data is loaded before rendering the page. We sometimes want to load the page while waiting for the data to be loaded.
