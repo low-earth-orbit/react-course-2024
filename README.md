@@ -13,6 +13,8 @@ Highlighted topics it covers
 - React Context API
 - Redux
 - React Router
+- Authentication
+- Deployment
 - React Query / TanStack
 - Next.js
 - React + TypeScript
