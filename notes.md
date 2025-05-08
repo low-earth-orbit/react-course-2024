@@ -337,3 +337,7 @@ Data is loaded before rendering the page.
 ### 371 - useRouteLoaderData
 
 `useRouteLoaderData` gets access to higher level loader from a route that doesn't have a loader.
+
+### 378 useFetcher hook
+
+`fetcher` is used whenever we need to trigger an action without triggering a route transition / don't load the route component
