@@ -8,6 +8,7 @@ function EventsPage() {
   // }
   const events = data.events;
 
+  console.log("events =", events);
   return <EventsList events={events} />;
 }
 
