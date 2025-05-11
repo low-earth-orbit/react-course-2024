@@ -345,3 +345,13 @@ Data is loaded before rendering the page.
 ### 379 defer data loading
 
 By default, data is loaded before rendering the page. We sometimes want to load the page while waiting for the data to be loaded.
+
+## Sec 24: Deployment
+
+### Lazy loading with React Router
+
+### Deployment process
+
+`npm run build` produces an optimized code bundle that is ready to be updated to the app server.
+
+A React SPA is a "Static Website". Only HTML, CSS & JavaScript. A static side host is needed.
