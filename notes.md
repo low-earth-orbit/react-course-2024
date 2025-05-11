@@ -355,3 +355,7 @@ By default, data is loaded before rendering the page. We sometimes want to load 
 `npm run build` produces an optimized code bundle that is ready to be updated to the app server.
 
 A React SPA is a "Static Website". Only HTML, CSS & JavaScript. A static side host is needed.
+
+### 406 Server-side routing vs client-side routing
+
+React Router is client-side routing.
