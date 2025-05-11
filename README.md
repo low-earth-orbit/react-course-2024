@@ -9,13 +9,10 @@ This repo includes source code from the course material and my modifications fol
 Highlighted topics it covers
 
 - Custom Hooks
-- Form Action
 - React Context API
 - Redux
 - React Router
-- Authentication
-- Deployment
-- React Query / TanStack
+- TanStack Query
 - Next.js
 - React + TypeScript
 
