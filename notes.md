@@ -365,3 +365,5 @@ React Router is client-side routing.
 You don't need Tanstack query. It can be done using `useEffect`; however, it simplifies things...
 
 Tanstack query does not send http query. The code that sends http request is you defined.
+
+Tanstack query caches data with an internal identifier `queryKey`. Cached data will be kept for a period of time (`gcTime`). Instant result is displayed first using the cached data. A new query is sent behind the scenes (subjected to specified `staleTime`), then it silently replaces the result with updated data.
