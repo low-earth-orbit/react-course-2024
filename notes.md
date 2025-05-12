@@ -363,3 +363,5 @@ React Router is client-side routing.
 ## Sec 25: Tanstack Query
 
 You don't need Tanstack query. It can be done using `useEffect`; however, it simplifies things...
+
+Tanstack query does not send http query. The code that sends http request is you defined.
