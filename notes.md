@@ -359,3 +359,7 @@ A React SPA is a "Static Website". Only HTML, CSS & JavaScript. A static side ho
 ### 406 Server-side routing vs client-side routing
 
 React Router is client-side routing.
+
+## Sec 25: Tanstack Query
+
+You don't need Tanstack query. It can be done using `useEffect`; however, it simplifies things...
