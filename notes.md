@@ -367,3 +367,11 @@ You don't need Tanstack query. It can be done using `useEffect`; however, it sim
 Tanstack query does not send http query. The code that sends http request is you defined.
 
 Tanstack query caches data with an internal identifier `queryKey`. Cached data will be kept for a period of time (`gcTime`). Instant result is displayed first using the cached data. A new query is sent behind the scenes (subjected to specified `staleTime`), then it silently replaces the result with updated data.
+
+### `isLoading` vs `isPending`
+
+`isPending` indicates that we’re waiting for data to load for the first time. The flag will always be true if the query is not enabled (`enabled: false`).
+
+`isLoading`: Indicates active data loading for the first time. If the query is not enabled, it will be false.
+
+`isFetching`: Indicates active data fetching. This flag is true when queryFn is executed for the first time or during background re-fetching.
