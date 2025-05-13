@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { createNewEvent } from "../../util/http.js";
+import { queryClient, createNewEvent } from "../../util/http.js";
 import Modal from "../UI/Modal.jsx";
 import EventForm from "./EventForm.jsx";
 import ErrorBlock from "../UI/ErrorBlock.jsx";
@@ -10,6 +10,10 @@ export default function NewEvent() {
 
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: createNewEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["events"] }); // invalidates keys that include `events`; we can specify `exact` to strictly invalidate the query with key `events`
+      navigate("/events");
+    },
   }); // mutate is a function that sends the request upon calling
 
   function handleSubmit(formData) {
