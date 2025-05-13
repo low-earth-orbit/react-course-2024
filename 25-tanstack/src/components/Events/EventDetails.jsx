@@ -12,7 +12,10 @@ export default function EventDetails() {
     mutationKey: ["events", id],
     mutationFn: deleteEvent,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["events"] });
+      queryClient.invalidateQueries({
+        queryKey: ["events"],
+        refetchType: "none", // existing queries will not be  triggered immediately after invalidation
+      });
       navigate("/events");
     },
   });
