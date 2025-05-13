@@ -375,3 +375,9 @@ Tanstack query caches data with an internal identifier `queryKey`. Cached data w
 `isLoading`: Indicates active data loading for the first time. If the query is not enabled, it will be false.
 
 `isFetching`: Indicates active data fetching. This flag is true when queryFn is executed for the first time or during background re-fetching.
+
+### `useMutation`
+
+`useQuery` for `GET`
+
+`useMutation` for `POST`/`PUT` Request is only sent if you want to send.
