@@ -6,8 +6,8 @@ import { fetchEvents } from "../../util/http.js";
 
 export default function NewEventsSection() {
   const { data, isPending, isError, error } = useQuery({
-    queryKey: ["events"], // every fetch request should have a query key that used internally by tanstack to cache the result of the query.
-    queryFn: fetchEvents, // the actual code will be executed that sends the http request.
+    queryKey: ["events", { max: 3 }], // every fetch request should have a query key that used internally by tanstack to cache the result of the query.
+    queryFn: ({ signal, queryKey }) => fetchEvents({ signal, ...queryKey[1] }), // the actual code will be executed that sends the http request.
     staleTime: 5000, // default is 0. how long it needs to wait before sending a behind the scenes request. wait for this time before sending another request.
     // gcTime: 30000, // default is 5 min
   });
