@@ -385,3 +385,15 @@ Tanstack query caches data with an internal identifier `queryKey`. Cached data w
 ## Sec 26 Next.js
 
 `app/page.js` server component - this component function is executed in the server.
+
+```
+app
+  about
+    page.js // this is about page
+  page.js // this is home page
+```
+
+`page.js` defines page content
+`layout.js` defines wrapper around pages
+`not-found.js` defines "not found" fallback page
+`error.js` defines "error" fallback page
