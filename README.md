@@ -20,3 +20,4 @@ Skipped:
 
 - Section 14: Class-based components
 - Old course content (Bonus/Optional)
+- Lecture 426: where Max tried to use React Router `action` instead of Tanstack `useMutation`

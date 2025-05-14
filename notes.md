@@ -381,3 +381,7 @@ Tanstack query caches data with an internal identifier `queryKey`. Cached data w
 `useQuery` for `GET`
 
 `useMutation` for `POST`/`PUT` Request is only sent if you want to send.
+
+## Sec 26 Next.js
+
+`app/page.js` server component - this component function is executed in the server.
