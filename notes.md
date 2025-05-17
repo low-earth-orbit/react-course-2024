@@ -397,3 +397,5 @@ app
 `layout.js` defines wrapper around pages
 `not-found.js` defines "not found" fallback page
 `error.js` defines "error" fallback page
+`globals.css` styles available for all pages
+`icon.png` favicon
