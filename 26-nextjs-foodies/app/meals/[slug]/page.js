@@ -1,4 +1,4 @@
-export default function MealPage({ params }) {
+export default function MealDetailsPage({ params }) {
   const { slug } = params;
   return (
     <main>
