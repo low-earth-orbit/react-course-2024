@@ -399,3 +399,16 @@ app
 `error.js` defines "error" fallback page
 `globals.css` styles available for all pages
 `icon.png` favicon
+
+### React server components vs client components
+
+- React is a pure front end framework. Out of box, components are client-side.
+- Next.js is a full-stack framework.
+
+- RSC: components that are only rendered on the server. By default all React components are RSC in Next.js apps. Advantage: less client-side JS, better SEO.
+- CC: components that are pre-rendered on the server but then also potentially on the client. Opt-in via "use client" declarative in Next.js.
+
+In Next.js apps:
+
+- The backend executes the server component functions.
+- The client-side receives and renders the to-be-rendered HTML code.
