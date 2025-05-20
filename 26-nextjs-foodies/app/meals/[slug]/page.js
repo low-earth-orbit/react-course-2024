@@ -1,11 +1,16 @@
 import Image from "next/image";
 import classes from "./page.module.css";
 import { getMeal } from "@/lib/meals";
+import { notFound } from "next/navigation";
 
 export default async function MealDetailsPage({ params }) {
   const { slug } = await params;
 
   const meal = await getMeal(slug);
+
+  if (!meal) {
+    notFound(); // calls the closest not found error page
+  }
 
   meal.instructions = meal.instructions.replace(/\n/g, "<br />"); // convert to HTML line breaks
 
