@@ -412,3 +412,5 @@ In Next.js apps:
 
 - The backend executes the server component functions.
 - The client-side receives and renders the to-be-rendered HTML code.
+
+### Next.js caching

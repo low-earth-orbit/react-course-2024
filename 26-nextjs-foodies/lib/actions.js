@@ -1,6 +1,7 @@
 "use server";
 
 import { saveMeal } from "@/lib/meals";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 function isInvalidText(text) {
@@ -33,5 +34,7 @@ export async function shareMeal(prevState, formData) {
   }
 
   await saveMeal(meal);
+  // revalidatePath("/meals", "layout"); // The second argument, "layout", is the cache key so that the nested pages will also be revalidated. (default is "page")
+  revalidatePath("/meals");
   redirect("/meals");
 }
