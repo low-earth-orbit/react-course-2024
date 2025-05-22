@@ -2,6 +2,11 @@ import sql from "better-sqlite3";
 import slugify from "slugify";
 import xss from "xss";
 import fs from "node:fs";
+import { S3 } from "@aws-sdk/client-s3";
+
+const s3 = new S3({
+  region: "ca-central-1",
+});
 
 const db = sql("meals.db");
 
@@ -25,16 +30,25 @@ export async function saveMeal(meal) {
   const extension = meal.image.name.split(".").pop();
   const fileName = `${meal.slug}.${extension}`; // could add random string to the file name
 
-  const stream = fs.createWriteStream(`public/images/${fileName}`); // this saves the image to the public/images folder
+  // const stream = fs.createWriteStream(`public/images/${fileName}`); // this saves the image to the public/images folder
   const bufferedImage = await meal.image.arrayBuffer();
 
-  stream.write(Buffer.from(bufferedImage), (error) => {
-    if (error) {
-      throw new Error("Error writing image to file");
-    }
+  // stream.write(Buffer.from(bufferedImage), (error) => {
+  //   if (error) {
+  //     throw new Error("Error writing image to file");
+  //   }
+  // });
+
+  // Upload the image to S3
+  s3.putObject({
+    Bucket: "leohong-nextjs-demo-users-image",
+    Key: fileName,
+    Body: Buffer.from(bufferedImage),
+    ContentType: meal.image.type,
   });
 
-  meal.image = `/images/${fileName}`;
+  // meal.image = `/images/${fileName}`;
+  meal.image = fileName;
 
   return db
     .prepare(
