@@ -4,6 +4,11 @@ import Link from "next/link";
 import { getMeals } from "@/lib/meals";
 import { Suspense } from "react";
 
+export const metadata = {
+  title: "All Meals - NextLevel Food",
+  description: "Discover all meals.",
+};
+
 // outsource the fetching data to a separate component
 async function Meals() {
   const meals = await getMeals();
