@@ -414,3 +414,9 @@ In Next.js apps:
 - The client-side receives and renders the to-be-rendered HTML code.
 
 ### Next.js caching
+
+Next.js applies aggressive caching. We need to manually trigger revalidation `revalidatePath`.
+
+### App router (new pattern) vs pages router (older pattern)
+
+Some projects are built using pages router, not app router (new pattern). L475- covers pages router.
