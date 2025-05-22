@@ -4,7 +4,7 @@ import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
-  const meal = await getMeal(params.slug);
+  const meal = await getMeal(await params.slug);
 
   if (!meal) {
     notFound();
