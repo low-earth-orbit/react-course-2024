@@ -11,9 +11,9 @@ Highlighted topics it covers
 - Custom Hooks
 - React Context API
 - Redux
-- React Router
+- React Router (I recommend skipping React Router -- use Next.js instead)
 - TanStack Query
-- Next.js
+- Next.js (I recommend skipping Pages Router)
 - React + TypeScript
 
 Skipped:
