@@ -438,3 +438,9 @@ Why convert to client components? We want to use client component features, such
 Server actions can be defined only in server component, using `"use server";` directive. It can be used in client component.
 
 Client component cann't be asynchronous.
+
+### `use()` Hook
+
+`use()` hook to get access to context. (learned earlier)
+
+It can also be used to await promises in client-components. Works together with Suspense to handle data fetching & looking fallbacks. `use()` for Promises requires special Promises.

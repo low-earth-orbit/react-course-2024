@@ -2,7 +2,7 @@
 
 import fs from "node:fs";
 
-async function saveUserAction(formData) {
+export async function saveUserAction(formData) {
   console.log("Server action called");
   const data = fs.readFileSync("dummy-db.json", "utf-8");
   const instructors = JSON.parse(data);
