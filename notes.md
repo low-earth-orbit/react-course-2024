@@ -428,3 +428,7 @@ Some projects are built using pages router, not app router (new pattern). L475- 
 React Server Server Components (RSC), Server Actions, use() with Promises are not available for use in standard vanilla React. These features require a server-side environment. Code must be split by the build process / code bundler process. Client-side code vs non client side code.
 
 RSCs are never executed on the client. Client components are rendered on both the server and client.
+
+In a Next.js app, all components by default are treated as server side components.
+
+Why convert to client components? We want to use client component features, such as state, context, etc. Most React features.
