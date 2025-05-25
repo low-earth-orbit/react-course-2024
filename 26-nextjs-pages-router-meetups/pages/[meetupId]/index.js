@@ -1,9 +1,17 @@
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 import { MongoClient, ObjectId } from "mongodb";
+import Head from "next/head";
 
 function MeetupDetailsPage(props) {
-  console.log("MeetupDetailsPage", props.meetupData);
-  return <MeetupDetail {...props.meetupData} />;
+  return (
+    <>
+      <Head>
+        <title>{props.meetupData.title}</title>
+        <meta name="description" content={props.meetupData.description} />
+      </Head>
+      <MeetupDetail {...props.meetupData} />
+    </>
+  );
 }
 
 export async function getStaticPaths() {
