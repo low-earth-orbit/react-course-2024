@@ -28,7 +28,10 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false, // Enable fallback for dynamic routes
+    fallback: "blocking", // true, false, or blocking
+    // true: fallback page will be shown until the data is fetched
+    // false: 404 page will be shown if the data is not found
+    // 'blocking': the page will be generated on the server and sent to the client
     paths: meetups.map((meetup) => ({
       params: {
         meetupId: meetup._id.toString(),
