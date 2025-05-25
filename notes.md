@@ -420,3 +420,5 @@ Next.js applies aggressive caching. We need to manually trigger revalidation `re
 ### App router (new pattern) vs pages router (older pattern)
 
 Some projects are built using pages router, not app router (new pattern). L475- covers pages router.
+
+### Static Site Generation vs Server-side rendering
