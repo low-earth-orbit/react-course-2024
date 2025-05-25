@@ -422,3 +422,9 @@ Next.js applies aggressive caching. We need to manually trigger revalidation `re
 Some projects are built using pages router, not app router (new pattern). L475- covers pages router.
 
 ### Static Site Generation vs Server-side rendering
+
+## Sec 27 React Server Components (RSC) & Server Actions
+
+React Server Server Components (RSC), Server Actions, use() with Promises are not available for use in standard vanilla React. These features require a server-side environment. Code must be split by the build process / code bundler process. Client-side code vs non client side code.
+
+RSCs are never executed on the client. Client components are rendered on both the server and client.
