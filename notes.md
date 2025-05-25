@@ -432,3 +432,9 @@ RSCs are never executed on the client. Client components are rendered on both th
 In a Next.js app, all components by default are treated as server side components.
 
 Why convert to client components? We want to use client component features, such as state, context, etc. Most React features.
+
+### Server actions
+
+Server actions can be defined only in server component, using `"use server";` directive. It can be used in client component.
+
+Client component cann't be asynchronous.
