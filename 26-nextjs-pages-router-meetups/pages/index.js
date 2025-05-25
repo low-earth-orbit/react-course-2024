@@ -24,30 +24,30 @@ function HomePage(props) {
   return <MeetupList meetups={props.meetups} />;
 }
 
-// This function runs on the server side
-// It runs on every request
-export async function getServerSideProps(context) {
-  const req = context.req;
-  const res = context.res;
+// // This function runs on the server side
+// // It runs on every request
+// export async function getServerSideProps(context) {
+//   const req = context.req;
+//   const res = context.res;
 
-  // Fetch data from an API
-  return {
-    props: {
-      meetups: DUMMY_MEETUPS,
-    },
-  };
-}
-
-// // Prepare the data for static generation
-// // This function runs at build time
-// export async function getStaticProps() {
 //   // Fetch data from an API
 //   return {
 //     props: {
 //       meetups: DUMMY_MEETUPS,
 //     },
-//     revalidate: 10, // In seconds
 //   };
 // }
+
+// Prepare the data for static generation
+// This function runs at build time
+export async function getStaticProps() {
+  // Fetch data from an API
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+    // revalidate: 10, // In seconds
+  };
+}
 
 export default HomePage;
