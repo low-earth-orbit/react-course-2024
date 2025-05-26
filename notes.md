@@ -444,3 +444,7 @@ Client component cann't be asynchronous.
 `use()` hook to get access to context. (learned earlier)
 
 It can also be used to await promises in client-components. Works together with Suspense to handle data fetching & looking fallbacks. `use()` for Promises requires special Promises.
+
+## Sec 28: Animation
+
+Framer motion library
