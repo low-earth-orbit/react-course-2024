@@ -32,5 +32,5 @@ I recommend skipping these:
 
 These may be optional:
 
-- S28: Animating React Apps
 - S25: Tanstack Query
+- S28: Animating React Apps (Framer Motion)
