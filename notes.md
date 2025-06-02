@@ -448,3 +448,9 @@ It can also be used to await promises in client-components. Works together with 
 ## Sec 28: Animation
 
 Framer motion library
+
+## Sec 30 Replacing Redux with React Hooks
+
+Context API is intended for low-frequency update.
+
+3rd Option: React Hook as a Store.
