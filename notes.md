@@ -463,3 +463,7 @@ End-to-end tests - complete scenarios, user flows
 
 Jest - for running our tests and asserting the results
 React Testing Library - for simulating / rendering our React app / components
+
+Arrange
+Act
+Assert
