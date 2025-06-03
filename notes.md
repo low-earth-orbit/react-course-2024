@@ -454,3 +454,12 @@ Framer motion library
 Context API is intended for low-frequency update.
 
 3rd Option: React Hook as a Store.
+
+## Sec 31: Unit tests
+
+Unit tests - test the individual building blocks (functions, components) in isolation
+Integration tests - test the combination of multiple building blocks
+End-to-end tests - complete scenarios, user flows
+
+Jest - for running our tests and asserting the results
+React Testing Library - for simulating / rendering our React app / components

@@ -29,7 +29,7 @@ I recommend skipping these:
 - S14: Class-based components
 - S22: React Router (use Next.js for routing instead)
 - Part of S26: "Pages Router" of Next.js
-- S30: Store using React Hook
+- S30: Store using React Hook (better to stick with Redux)
 
 These may be optional:
 
