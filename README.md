@@ -29,6 +29,7 @@ I recommend skipping these:
 - S14: Class-based components
 - S22: React Router (use Next.js for routing instead)
 - Part of S26: "Pages Router" of Next.js
+- S30: Store using React Hook
 
 These may be optional:
 

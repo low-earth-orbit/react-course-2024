@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import Card from "../UI/Card";
 import "./ProductItem.css";
 import { useStore } from "../../hooks-store/store";
 
-const ProductItem = (props) => {
-  const dispatch = useStore()[1];
+const ProductItem = React.memo((props) => {
+  console.log("ProductItem.js: ProductItem rendered");
+  const dispatch = useStore(false)[1]; // do not register a listener
+  // to avoid re-rendering this component on every state change
 
   const toggleFavHandler = () => {
-    console.log("Toggling favorite status for product with ID:", props.id);
-    // toggleFav(props.id);
     dispatch("TOGGLE_FAV", props.id);
   };
 
@@ -27,6 +27,6 @@ const ProductItem = (props) => {
       </div>
     </Card>
   );
-};
+});
 
 export default ProductItem;
