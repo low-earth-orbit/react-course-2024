@@ -467,3 +467,7 @@ React Testing Library - for simulating / rendering our React app / components
 Arrange
 Act
 Assert
+
+### `getAllByRole` vs `await findAllByRole`
+
+### Working with mocks
