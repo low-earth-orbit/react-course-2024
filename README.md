@@ -1,10 +1,12 @@
-# react-course-2024
+# React - The Complete Guide 2025
 
-My repo for the React course on udemy: [Link to course](https://www.udemy.com/course/react-the-complete-guide-incl-redux/)
+This repo includes source code from the course material and my modifications following [this video-based course](https://www.udemy.com/course/react-the-complete-guide-incl-redux/). I followed this course in 2022 but did not complete. Since it's been updated extensively I went over it again in 2024 & 2025.
 
-This repo includes source code from the course material and my modifications following this video-based course. I followed this course in 2022 but did not complete. Since it's been updated extensively I am going over it again, albeit slowly!
+[Course completion certificate](https://www.udemy.com/certificate/UC-0f5201f4-8d6b-49f0-a604-a7282394d377/)
 
 [Notes](/notes.md)
+
+## Topics
 
 Highlighted topics it covers
 
@@ -21,6 +23,8 @@ Skipped:
 - Section 14: Class-based components
 - Lecture 426: Instead of using Tanstack `useMutation`, Max tried to integrate Tanstack with React Router's `action`.
 - Old course content
+
+## Verdict
 
 It's a very comprehensive course to React! Overall, I highly recommend it.
 
