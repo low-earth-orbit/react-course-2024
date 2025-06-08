@@ -471,3 +471,9 @@ Assert
 ### `getAllByRole` vs `await findAllByRole`
 
 ### Working with mocks
+
+## Section 33: React + TypeScript
+
+```typescript
+onRemove={props.onRemoveTodo.bind(null, item.id)}
+```
